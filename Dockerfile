@@ -1,4 +1,4 @@
 FROM openjdk:17-ea-jdk-slim
 LABEL authors="51511"
-COPY target/mall.jar /mall.jar
+COPY target/demo-0.0.1-SNAPSHOT.jar /demo.jar
 ENTRYPOINT ["java", "-jar", "/mall.jar"]
