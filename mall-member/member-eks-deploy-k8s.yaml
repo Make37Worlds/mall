@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-member-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-member
+  template:
+    metadata:
+      labels:
+        app: mall-member
+    spec:
+      containers:
+        - name: mall-member
+          image: 171312460935.dkr.ecr.ap-southeast-1.amazonaws.com/mall-member:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-member-service
+spec:
+  selector:
+    app: mall-member
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
