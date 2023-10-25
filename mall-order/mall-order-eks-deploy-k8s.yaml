@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-order-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-order
+  template:
+    metadata:
+      labels:
+        app: mall-order
+    spec:
+      containers:
+        - name: mall-order
+          image: 171312460935.dkr.ecr.ap-southeast-1.amazonaws.com/mall-order:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-order-service
+spec:
+  selector:
+    app: mall-order
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: NodePort
