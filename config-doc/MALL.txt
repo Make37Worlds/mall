@@ -1,0 +1,15 @@
+ECR URI
+171312460935.dkr.ecr.ap-southeast-1.amazonaws.com/mall
+
+JENKINS URI:
+http://52.221.191.70:8080/
+
+JENKINS USER:
+admin
+69ddfa252ba84b9589e9a655229c6d97
+
+mysql:
+13.229.138.182:31517
+root 69ddfa252ba84b9589e9a655229c6d97
+
+
