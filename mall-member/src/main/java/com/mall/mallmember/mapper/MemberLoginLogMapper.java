@@ -2,6 +2,7 @@ package com.mall.mallmember.mapper;
 
 import com.mall.mallmember.entity.MemberLoginLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Jiayu
  * @since 2023-10-25
  */
+@Mapper
 public interface MemberLoginLogMapper extends BaseMapper<MemberLoginLog> {
 
 }
