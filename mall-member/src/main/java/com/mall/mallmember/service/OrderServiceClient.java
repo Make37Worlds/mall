@@ -14,7 +14,7 @@ public class OrderServiceClient {
 
     public String fetchOrderDetailsForMember(String memberId) {
         // Using the service name for DNS resolution within the Kubernetes cluster
-        String orderServiceUrl = "http://mall-order-service:80/mallorderorder/" + memberId;
+        String orderServiceUrl = "http://mall-order-service:80/mallorder/order/" + memberId;
         return restTemplate.getForObject(orderServiceUrl, String.class);
     }
 }
