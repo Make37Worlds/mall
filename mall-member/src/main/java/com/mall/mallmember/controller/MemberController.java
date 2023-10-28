@@ -1,5 +1,8 @@
 package com.mall.mallmember.controller;
 
+import com.mall.mallmember.service.OrderServiceClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
@@ -14,5 +17,14 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/mallmember/member")
 public class MemberController {
+    private final OrderServiceClient orderServiceClient;
 
+    public MemberController(OrderServiceClient orderServiceClient) {
+        this.orderServiceClient = orderServiceClient;
+    }
+
+    @GetMapping("/mallmember/member/{memberId}/orders")
+    public String getMemberOrders(@PathVariable String memberId) {
+        return orderServiceClient.fetchOrderDetailsForMember(memberId);
+    }
 }
