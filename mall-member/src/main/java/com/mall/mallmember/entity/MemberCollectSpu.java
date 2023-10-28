@@ -3,8 +3,6 @@ package com.mall.mallmember.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
@@ -15,27 +13,21 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2023-10-25
  */
 @TableName("ums_member_collect_spu")
-@ApiModel(value = "MemberCollectSpu对象", description = "ï¿½ï¿½Ô±ï¿½Õ²Øµï¿½ï¿½ï¿½Æ·")
+
 public class MemberCollectSpu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
     private Long id;
 
-    @ApiModelProperty("ï¿½ï¿½Ô±id")
     private Long memberId;
 
-    @ApiModelProperty("spu_id")
     private Long spuId;
 
-    @ApiModelProperty("spu_name")
     private String spuName;
 
-    @ApiModelProperty("spu_img")
     private String spuImg;
 
-    @ApiModelProperty("create_time")
     private LocalDateTime createTime;
 
     public Long getId() {

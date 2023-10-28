@@ -3,59 +3,43 @@ package com.mall.mallorder.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
- * <p>
- * Ö§ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
- * </p>
- *
- * @author Jiayu
- * @since 2023-10-25
+ * Payment Information Entity
  */
 @TableName("oms_payment_info")
-@ApiModel(value = "PaymentInfo对象", description = "Ö§ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½")
 public class PaymentInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Å£ï¿½")
     private String orderSn;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½id")
     private Long orderId;
 
-    @ApiModelProperty("Ö§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½")
     private String alipayTradeNo;
 
-    @ApiModelProperty("Ö§ï¿½ï¿½ï¿½Ü½ï¿½ï¿½")
     private BigDecimal totalAmount;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
     private String subject;
 
-    @ApiModelProperty("Ö§ï¿½ï¿½×´Ì¬")
     private String paymentStatus;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("È·ï¿½ï¿½Ê±ï¿½ï¿½")
     private LocalDateTime confirmTime;
 
-    @ApiModelProperty("ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½")
     private String callbackContent;
 
-    @ApiModelProperty("ï¿½Øµï¿½Ê±ï¿½ï¿½")
     private LocalDateTime callbackTime;
+
+    // Getter and Setter methods for all fields
 
     public Long getId() {
         return id;
@@ -148,17 +132,17 @@ public class PaymentInfo implements Serializable {
     @Override
     public String toString() {
         return "PaymentInfo{" +
-            "id = " + id +
-            ", orderSn = " + orderSn +
-            ", orderId = " + orderId +
-            ", alipayTradeNo = " + alipayTradeNo +
-            ", totalAmount = " + totalAmount +
-            ", subject = " + subject +
-            ", paymentStatus = " + paymentStatus +
-            ", createTime = " + createTime +
-            ", confirmTime = " + confirmTime +
-            ", callbackContent = " + callbackContent +
-            ", callbackTime = " + callbackTime +
-        "}";
+                "id=" + id +
+                ", orderSn='" + orderSn + '\'' +
+                ", orderId=" + orderId +
+                ", alipayTradeNo='" + alipayTradeNo + '\'' +
+                ", totalAmount=" + totalAmount +
+                ", subject='" + subject + '\'' +
+                ", paymentStatus='" + paymentStatus + '\'' +
+                ", createTime=" + createTime +
+                ", confirmTime=" + confirmTime +
+                ", callbackContent='" + callbackContent + '\'' +
+                ", callbackTime=" + callbackTime +
+                '}';
     }
 }

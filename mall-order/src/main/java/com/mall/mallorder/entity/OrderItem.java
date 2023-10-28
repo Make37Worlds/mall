@@ -5,8 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
 
 /**
  * <p>
@@ -17,49 +16,48 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2023-10-25
  */
 @TableName("oms_order_item")
-@ApiModel(value = "OrderItem对象", description = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢")
 public class OrderItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
+
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("order_id")
+
     private Long orderId;
 
-    @ApiModelProperty("order_sn")
+
     private String orderSn;
 
-    @ApiModelProperty("spu_id")
+
     private Long spuId;
 
-    @ApiModelProperty("spu_name")
+
     private String spuName;
 
-    @ApiModelProperty("spu_pic")
+
     private String spuPic;
 
-    @ApiModelProperty("Æ·ï¿½ï¿½")
+
     private String spuBrand;
 
-    @ApiModelProperty("ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½id")
+
     private Long categoryId;
 
-    @ApiModelProperty("ï¿½ï¿½Æ·skuï¿½ï¿½ï¿½")
+
     private Long skuId;
 
-    @ApiModelProperty("ï¿½ï¿½Æ·skuï¿½ï¿½ï¿½ï¿½")
+
     private String skuName;
 
-    @ApiModelProperty("ï¿½ï¿½Æ·skuÍ¼Æ¬")
+
     private String skuPic;
 
-    @ApiModelProperty("ï¿½ï¿½Æ·skuï¿½Û¸ï¿½")
+
     private BigDecimal skuPrice;
 
-    @ApiModelProperty("ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
+
     private Integer skuQuantity;
 
     public Long getId() {

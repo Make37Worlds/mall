@@ -6,8 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
 
 /**
  * <p>
@@ -18,55 +17,39 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2023-10-25
  */
 @TableName("ums_member")
-@ApiModel(value = "Member对象", description = "»áÔ±")
 public class Member implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("»áÔ±µÈ¼¶id")
     private Long levelId;
 
-    @ApiModelProperty("ÓÃ»§Ãû")
     private String username;
 
-    @ApiModelProperty("ÃÜÂë")
     private String password;
 
-    @ApiModelProperty("êÇ³Æ")
     private String nickname;
 
-    @ApiModelProperty("ÊÖ»úºÅÂë")
     private String mobile;
 
-    @ApiModelProperty("ÓÊÏä")
     private String email;
 
-    @ApiModelProperty("Í·Ïñ")
     private String header;
 
-    @ApiModelProperty("ÐÔ±ð")
     private Byte gender;
 
-    @ApiModelProperty("ÉúÈÕ")
     private LocalDate birth;
 
-    @ApiModelProperty("ËùÔÚ³ÇÊÐ")
     private String city;
 
-    @ApiModelProperty("Ö°Òµ")
     private String job;
 
-    @ApiModelProperty("¸öÐÔÇ©Ãû")
     private String sign;
 
-    @ApiModelProperty("ÆôÓÃ×´Ì¬")
     private Byte status;
 
-    @ApiModelProperty("×¢²áÊ±¼ä")
     private LocalDateTime createTime;
 
     public Long getId() {

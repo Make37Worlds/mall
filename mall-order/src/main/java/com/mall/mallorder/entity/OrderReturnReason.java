@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
@@ -17,25 +15,19 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2023-10-25
  */
 @TableName("oms_order_return_reason")
-@ApiModel(value = "OrderReturnReason对象", description = "ï¿½Ë»ï¿½Ô­ï¿½ï¿½")
 public class OrderReturnReason implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("ï¿½Ë»ï¿½Ô­ï¿½ï¿½ï¿½ï¿½")
     private String name;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½")
     private Integer sort;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½×´Ì¬")
     private Boolean status;
 
-    @ApiModelProperty("create_time")
     private LocalDateTime createTime;
 
     public Long getId() {
@@ -81,11 +73,11 @@ public class OrderReturnReason implements Serializable {
     @Override
     public String toString() {
         return "OrderReturnReason{" +
-            "id = " + id +
-            ", name = " + name +
-            ", sort = " + sort +
-            ", status = " + status +
-            ", createTime = " + createTime +
-        "}";
+                "id = " + id +
+                ", name = " + name +
+                ", sort = " + sort +
+                ", status = " + status +
+                ", createTime = " + createTime +
+                "}";
     }
 }

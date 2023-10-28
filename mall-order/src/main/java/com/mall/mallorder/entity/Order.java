@@ -6,8 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
 
 /**
  * <p>
@@ -18,97 +17,93 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2023-10-25
  */
 @TableName("oms_order")
-@ApiModel(value = "Order对象", description = "ï¿½ï¿½ï¿½ï¿½")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("member_id")
+
     private Long memberId;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
+
     private String orderSn;
 
-    @ApiModelProperty("create_time")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("ï¿½Ã»ï¿½ï¿½ï¿½")
     private String memberUsername;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½Ü¶ï¿½")
+
     private BigDecimal totalAmount;
 
-    @ApiModelProperty("Ó¦ï¿½ï¿½ï¿½Ü¶ï¿½")
+
     private BigDecimal payAmount;
 
-    @ApiModelProperty("ï¿½Ë·Ñ½ï¿½ï¿½")
+
     private BigDecimal freightAmount;
 
-    @ApiModelProperty("Ö§ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½1->Ö§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2->Î¢ï¿½Å£ï¿½3->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î£»ï¿½ï¿½")
+
     private Byte payType;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´[0->PCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1->appï¿½ï¿½ï¿½ï¿½]")
+
     private Byte sourceType;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½0->ï¿½ï¿½ï¿½ï¿½ï¿½î£»1->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2->ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½3->ï¿½ï¿½ï¿½ï¿½É£ï¿½4->ï¿½Ñ¹Ø±Õ£ï¿½5->ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
+
     private Byte status;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¾(ï¿½ï¿½ï¿½Í·ï¿½Ê½)")
+
     private String deliveryCompany;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
+
     private String deliverySn;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½Ô»ï¿½ÃµÄ³É³ï¿½Öµ")
+
     private Integer growth;
 
-    @ApiModelProperty("ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
+
     private String receiverName;
 
-    @ApiModelProperty("ï¿½Õ»ï¿½ï¿½Ëµç»°")
+
     private String receiverPhone;
 
-    @ApiModelProperty("ï¿½Õ»ï¿½ï¿½ï¿½ï¿½Ê±ï¿½")
+
     private String receiverPostCode;
 
-    @ApiModelProperty("Ê¡ï¿½ï¿½/Ö±Ï½ï¿½ï¿½")
+
     private String receiverProvince;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½")
+
     private String receiverCity;
 
-    @ApiModelProperty("ï¿½ï¿½")
+
     private String receiverRegion;
 
-    @ApiModelProperty("ï¿½ï¿½Ï¸ï¿½ï¿½Ö·")
+
     private String receiverDetailAddress;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢")
+
     private String note;
 
-    @ApiModelProperty("È·ï¿½ï¿½ï¿½Õ»ï¿½×´Ì¬[0->Î´È·ï¿½Ï£ï¿½1->ï¿½ï¿½È·ï¿½ï¿½]")
+
     private Byte confirmStatus;
 
-    @ApiModelProperty("É¾ï¿½ï¿½×´Ì¬ï¿½ï¿½0->Î´É¾ï¿½ï¿½ï¿½ï¿½1->ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½")
+
     private Byte deleteStatus;
 
-    @ApiModelProperty("Ö§ï¿½ï¿½Ê±ï¿½ï¿½")
+
     private LocalDateTime paymentTime;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½")
+
     private LocalDateTime deliveryTime;
 
-    @ApiModelProperty("È·ï¿½ï¿½ï¿½Õ»ï¿½Ê±ï¿½ï¿½")
+
     private LocalDateTime receiveTime;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½")
+
     private LocalDateTime commentTime;
 
-    @ApiModelProperty("ï¿½Þ¸ï¿½Ê±ï¿½ï¿½")
+
     private LocalDateTime modifyTime;
 
     public Long getId() {

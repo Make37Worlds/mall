@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
@@ -17,28 +15,21 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2023-10-25
  */
 @TableName("ums_member_login_log")
-@ApiModel(value = "MemberLoginLog对象", description = "ï¿½ï¿½Ô±ï¿½ï¿½Â¼ï¿½ï¿½Â¼")
 public class MemberLoginLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("member_id")
     private Long memberId;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½")
     private LocalDateTime createTime;
 
-    @ApiModelProperty("ip")
     private String ip;
 
-    @ApiModelProperty("city")
     private String city;
 
-    @ApiModelProperty("ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½[1-webï¿½ï¿½2-app]")
     private Boolean loginType;
 
     public Long getId() {
@@ -92,12 +83,12 @@ public class MemberLoginLog implements Serializable {
     @Override
     public String toString() {
         return "MemberLoginLog{" +
-            "id = " + id +
-            ", memberId = " + memberId +
-            ", createTime = " + createTime +
-            ", ip = " + ip +
-            ", city = " + city +
-            ", loginType = " + loginType +
-        "}";
+                "id = " + id +
+                ", memberId = " + memberId +
+                ", createTime = " + createTime +
+                ", ip = " + ip +
+                ", city = " + city +
+                ", loginType = " + loginType +
+                "}";
     }
 }

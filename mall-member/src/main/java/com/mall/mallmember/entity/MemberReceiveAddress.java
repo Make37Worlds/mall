@@ -4,8 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
@@ -16,43 +14,32 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2023-10-25
  */
 @TableName("ums_member_receive_address")
-@ApiModel(value = "MemberReceiveAddress对象", description = "ï¿½ï¿½Ô±ï¿½Õ»ï¿½ï¿½ï¿½Ö·")
 public class MemberReceiveAddress implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
+
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("member_id")
     private Long memberId;
 
-    @ApiModelProperty("ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
     private String name;
 
-    @ApiModelProperty("ï¿½ç»°")
     private String phone;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
     private String postCode;
 
-    @ApiModelProperty("Ê¡ï¿½ï¿½/Ö±Ï½ï¿½ï¿½")
     private String province;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½")
     private String city;
 
-    @ApiModelProperty("ï¿½ï¿½")
     private String region;
 
-    @ApiModelProperty("ï¿½ï¿½Ï¸ï¿½ï¿½Ö·(ï¿½Öµï¿½)")
     private String detailAddress;
 
-    @ApiModelProperty("Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
     private String areacode;
 
-    @ApiModelProperty("ï¿½Ç·ï¿½Ä¬ï¿½ï¿½")
     private Boolean defaultStatus;
 
     public Long getId() {

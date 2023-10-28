@@ -3,42 +3,31 @@ package com.mall.mallorder.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
- * <p>
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
- * </p>
- *
- * @author Jiayu
- * @since 2023-10-25
+ * Order Setting Entity
  */
 @TableName("oms_order_setting")
-@ApiModel(value = "OrderSetting对象", description = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢")
 public class OrderSetting implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ø±ï¿½Ê±ï¿½ï¿½(ï¿½ï¿½)")
     private Integer flashOrderOvertime;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ê±ï¿½ï¿½(ï¿½ï¿½)")
     private Integer normalOrderOvertime;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½È·ï¿½ï¿½ï¿½Õ»ï¿½Ê±ï¿½ä£¨ï¿½ì£©")
     private Integer confirmOvertime;
 
-    @ApiModelProperty("ï¿½Ô¶ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ì£©")
     private Integer finishOvertime;
 
-    @ApiModelProperty("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¨ï¿½ì£©")
     private Integer commentOvertime;
+
+    // Getter and Setter methods for all fields
 
     public Long getId() {
         return id;
@@ -91,12 +80,12 @@ public class OrderSetting implements Serializable {
     @Override
     public String toString() {
         return "OrderSetting{" +
-            "id = " + id +
-            ", flashOrderOvertime = " + flashOrderOvertime +
-            ", normalOrderOvertime = " + normalOrderOvertime +
-            ", confirmOvertime = " + confirmOvertime +
-            ", finishOvertime = " + finishOvertime +
-            ", commentOvertime = " + commentOvertime +
-        "}";
+                "id=" + id +
+                ", flashOrderOvertime=" + flashOrderOvertime +
+                ", normalOrderOvertime=" + normalOrderOvertime +
+                ", confirmOvertime=" + confirmOvertime +
+                ", finishOvertime=" + finishOvertime +
+                ", commentOvertime=" + commentOvertime +
+                '}';
     }
 }
