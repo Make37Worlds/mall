@@ -23,11 +23,11 @@ public class MemberController {
         this.orderServiceClient = orderServiceClient;
     }
 
-    @GetMapping("/mallmember/member/test")
+    @GetMapping("/test")
     public String getMemberOrders() {
         return "success";
     }
-    @GetMapping("/mallmember/member/{memberId}/orders")
+    @GetMapping("{memberId}/orders")
     public String getMemberOrders(@PathVariable String memberId) {
         return orderServiceClient.fetchOrderDetailsForMember(memberId);
     }
