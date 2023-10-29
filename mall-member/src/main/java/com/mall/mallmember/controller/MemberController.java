@@ -8,6 +8,7 @@ import com.mall.mallmember.entity.MemberStatisticsInfo;
 import com.mall.mallmember.service.IMemberService;
 import com.mall.mallmember.service.OrderServiceClient;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,6 +65,8 @@ public class MemberController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addMember(@RequestBody Member member) {
+        String password = member.getPassword();
+        member.setPassword(DigestUtils.sha256Hex(password));
         if (memberService.addMember(member)) {
             return ResponseEntity.ok("Member added successfully!");
         } else {

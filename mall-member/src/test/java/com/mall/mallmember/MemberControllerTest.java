@@ -69,7 +69,7 @@ public class MemberControllerTest {
     public void testAddMember() throws Exception {
         Member member = new Member();
         member.setUsername("John");
-
+        member.setPassword("123");
         when(memberService.addMember(any(Member.class))).thenReturn(true);
 
         mockMvc.perform(post("/mallmember/member/add")
