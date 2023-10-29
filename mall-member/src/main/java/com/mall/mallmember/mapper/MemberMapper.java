@@ -21,7 +21,7 @@ public interface MemberMapper extends BaseMapper<Member> {
     Member findByUsername(@Param("username") String username);
 
     @Select("SELECT * FROM ums_member WHERE username = #{username}")
-    MemberVo findVoByUsername(String name);
+    MemberVo findVoByUsername(@Param("username") String username);
 
     @Select("SELECT * FROM ums_member WHERE mobile = #{mobile}")
     Member findByMobile(@Param("mobile") String mobile);
