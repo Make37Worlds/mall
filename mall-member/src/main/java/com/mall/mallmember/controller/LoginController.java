@@ -7,6 +7,7 @@ import com.mall.mallmember.entity.vo.MemberVo;
 import com.mall.mallmember.service.IMemberService;
 import com.mall.mallmember.util.JwtUtils;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +29,7 @@ public class LoginController {
         // 判断输入的用户名、密码不能为空
         String loginName =userLogin.getUsername();
         String password = userLogin.getPassword();
-        if(loginName.isEmpty() || password.isEmpty()){
+        if (loginName == null || loginName.isEmpty() || password == null || password.isEmpty()) {
             return ResultInfo.failure(ResultCode.LOGINNAME_PWD_NOT_EXIST);
         }
         password = DigestUtils.sha256Hex(password);
