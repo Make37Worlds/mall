@@ -6,7 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * <p>

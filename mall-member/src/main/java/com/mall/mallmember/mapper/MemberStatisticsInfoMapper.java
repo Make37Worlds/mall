@@ -1,18 +1,27 @@
 package com.mall.mallmember.mapper;
 
-import com.mall.mallmember.entity.MemberStatisticsInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.mall.mallmember.entity.MemberStatisticsInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
-/**
- * <p>
- * ï¿½ï¿½Ô±Í³ï¿½ï¿½ï¿½ï¿½Ï¢ Mapper 接口
- * </p>
- *
- * @author Jiayu
- * @since 2023-10-25
- */
+import java.math.BigDecimal;
+
 @Mapper
 public interface MemberStatisticsInfoMapper extends BaseMapper<MemberStatisticsInfo> {
+
+
+    @Select("SELECT * FROM ums_member_statistics_info WHERE member_id = #{memberId}")
+    MemberStatisticsInfo findByMemberId(@Param("memberId") Long memberId);
+
+    @Select("SELECT SUM(consume_amount) FROM ums_member_statistics_info WHERE member_id = #{memberId}")
+    BigDecimal totalConsumeAmountByMemberId(@Param("memberId") Long memberId);
+
+    @Select("SELECT SUM(coupon_amount) FROM ums_member_statistics_info WHERE member_id = #{memberId}")
+    BigDecimal totalCouponAmountByMemberId(@Param("memberId") Long memberId);
+
+    @Select("SELECT AVG(order_count) FROM ums_member_statistics_info")
+    Double averageOrderCount();
 
 }

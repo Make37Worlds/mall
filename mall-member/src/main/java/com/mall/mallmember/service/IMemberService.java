@@ -2,6 +2,11 @@ package com.mall.mallmember.service;
 
 import com.mall.mallmember.entity.Member;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mall.mallmember.entity.MemberLoginLog;
+import com.mall.mallmember.entity.MemberReceiveAddress;
+import com.mall.mallmember.entity.MemberStatisticsInfo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +18,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IMemberService extends IService<Member> {
 
+    Member getMemberById(Long memberId);
+
+    List<MemberLoginLog> getLoginLogsForMember(Long memberId);
+
+    List<MemberReceiveAddress> getAddressesForMember(Long memberId);
+
+    MemberStatisticsInfo getStatisticsForMember(Long memberId);
+
+    boolean addMember(Member member);
 }

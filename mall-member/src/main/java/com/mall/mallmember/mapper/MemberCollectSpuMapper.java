@@ -1,18 +1,26 @@
 package com.mall.mallmember.mapper;
 
-import com.mall.mallmember.entity.MemberCollectSpu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.mall.mallmember.entity.MemberCollectSpu;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
-/**
- * <p>
- * ï¿½ï¿½Ô±ï¿½Õ²Øµï¿½ï¿½ï¿½Æ· Mapper 接口
- * </p>
- *
- * @author Jiayu
- * @since 2023-10-25
- */
+import java.util.List;
+
 @Mapper
 public interface MemberCollectSpuMapper extends BaseMapper<MemberCollectSpu> {
+
+    @Select("SELECT * FROM ums_member_collect_spu WHERE member_id = #{memberId}")
+    List<MemberCollectSpu> findByMemberId(@Param("memberId") Long memberId);
+
+    @Select("SELECT * FROM ums_member_collect_spu WHERE spu_id = #{spuId}")
+    List<MemberCollectSpu> findBySpuId(@Param("spuId") Long spuId);
+
+    @Select("SELECT * FROM ums_member_collect_spu WHERE member_id = #{memberId} AND spu_id = #{spuId}")
+    MemberCollectSpu findByMemberIdAndSpuId(@Param("memberId") Long memberId, @Param("spuId") Long spuId);
+
+    @Select("SELECT * FROM ums_member_collect_spu WHERE spu_name LIKE CONCAT('%', #{spuName}, '%')")
+    List<MemberCollectSpu> findBySpuNameContains(@Param("spuName") String spuName);
 
 }

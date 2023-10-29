@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+import lombok.Data;
 
 /**
  * <p>
@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
  * @author Jiayu
  * @since 2023-10-25
  */
+@Data
 @TableName("ums_member")
 public class Member implements Serializable {
 
