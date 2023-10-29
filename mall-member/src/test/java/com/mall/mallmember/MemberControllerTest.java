@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mall.mallmember.service.OrderServiceClient;
 import com.mall.mallmember.service.IMemberService;
 import com.mall.mallmember.entity.Member;
+import java.util.Optional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -39,6 +40,21 @@ public class MemberControllerTest {
 
     @MockBean
     private IMemberService memberService;
+    @Test
+    public void testGetMemberByName() throws Exception {
+        Member mockMember = new Member();
+        mockMember.setUsername("John Doe");
+        // set other properties as needed
+
+        when(memberService.getMemberByName("John Doe")).thenReturn(mockMember);
+
+        mockMvc.perform(get("/mallmember/member/findMemberByName")
+                        .param("name", "John Doe")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(new ObjectMapper().writeValueAsString(mockMember)));
+    }
+
 
     @Test
     public void testGetMemberOrders() throws Exception {
@@ -53,7 +69,6 @@ public class MemberControllerTest {
     public void testAddMember() throws Exception {
         Member member = new Member();
         member.setUsername("John");
-        // set other properties...
 
         when(memberService.addMember(any(Member.class))).thenReturn(true);
 

@@ -19,6 +19,8 @@ import java.util.List;
  */
 public interface IMemberService extends IService<Member> {
 
+    Member getMemberByName(String name);
+
     Member getMemberById(Long memberId);
 
     List<MemberLoginLog> getLoginLogsForMember(Long memberId);
@@ -28,4 +30,5 @@ public interface IMemberService extends IService<Member> {
     MemberStatisticsInfo getStatisticsForMember(Long memberId);
 
     boolean addMember(Member member);
+
 }

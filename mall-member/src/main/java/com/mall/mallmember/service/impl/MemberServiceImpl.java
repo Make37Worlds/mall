@@ -13,6 +13,10 @@ import java.util.List;
 
 @Service
 public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> implements IMemberService {
+    @Override
+    public Member getMemberByName(String name){
+        return baseMapper.findByUsername(name);
+    }
 
     @Override
     public Member getMemberById(Long memberId) {
@@ -38,5 +42,6 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     public boolean addMember(Member member) {
         return this.save(member);
     }
+
 
 }

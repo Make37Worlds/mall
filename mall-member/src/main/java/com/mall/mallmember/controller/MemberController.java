@@ -42,6 +42,11 @@ public class MemberController {
         return memberService.getMemberById(memberId);
     }
 
+    @GetMapping("/findMemberByName")
+    public Member getMemberByName(@RequestParam String name) {
+        return memberService.getMemberByName(name);
+    }
+
     @GetMapping("/{memberId}/loginlogs")
     public List<MemberLoginLog> getMemberLoginLogs(@PathVariable Long memberId) {
         return memberService.getLoginLogsForMember(memberId);
