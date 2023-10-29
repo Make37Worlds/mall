@@ -17,7 +17,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 @RestController
 public class LoginController {
-    
+
     @Autowired
     private IMemberService userService;
 
@@ -35,7 +35,7 @@ public class LoginController {
         }
         password = DigestUtils.sha256Hex(password);
         // 查询数据库中对应的user对象，判断用户是否存在、密码是否正确
-        MemberVo userVo = (MemberVo) userService.getMemberByName(loginName);
+        MemberVo userVo = userService.getMemberVoByName(loginName);
         if(userVo == null || !password.equals(userVo.getPassword())){
             return ResultInfo.failure(ResultCode.USER_LOGIN_ERROR);
         }

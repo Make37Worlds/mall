@@ -4,6 +4,7 @@ import com.mall.mallmember.entity.Member;
 import com.mall.mallmember.entity.MemberLoginLog;
 import com.mall.mallmember.entity.MemberReceiveAddress;
 import com.mall.mallmember.entity.MemberStatisticsInfo;
+import com.mall.mallmember.entity.vo.MemberVo;
 import com.mall.mallmember.mapper.MemberMapper;
 import com.mall.mallmember.service.IMemberService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -17,6 +18,11 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     public Member getMemberByName(String name){
         return baseMapper.findByUsername(name);
     }
+    @Override
+    public MemberVo getMemberVoByName(String name){
+        return baseMapper.findVoByUsername(name);
+    }
+
 
     @Override
     public Member getMemberById(Long memberId) {

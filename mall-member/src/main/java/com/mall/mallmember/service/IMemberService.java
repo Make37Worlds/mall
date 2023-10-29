@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.mallmember.entity.MemberLoginLog;
 import com.mall.mallmember.entity.MemberReceiveAddress;
 import com.mall.mallmember.entity.MemberStatisticsInfo;
+import com.mall.mallmember.entity.vo.MemberVo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -20,6 +21,8 @@ import java.util.List;
 public interface IMemberService extends IService<Member> {
 
     Member getMemberByName(String name);
+
+    MemberVo getMemberVoByName(String name);
 
     Member getMemberById(Long memberId);
 

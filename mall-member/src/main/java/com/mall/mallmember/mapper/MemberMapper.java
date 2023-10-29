@@ -6,6 +6,7 @@ import com.mall.mallmember.entity.Member;
 import com.mall.mallmember.entity.MemberLoginLog;
 import com.mall.mallmember.entity.MemberReceiveAddress;
 import com.mall.mallmember.entity.MemberStatisticsInfo;
+import com.mall.mallmember.entity.vo.MemberVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -18,6 +19,9 @@ public interface MemberMapper extends BaseMapper<Member> {
 
     @Select("SELECT * FROM ums_member WHERE username = #{username}")
     Member findByUsername(@Param("username") String username);
+
+    @Select("SELECT * FROM ums_member WHERE username = #{username}")
+    MemberVo findVoByUsername(String name);
 
     @Select("SELECT * FROM ums_member WHERE mobile = #{mobile}")
     Member findByMobile(@Param("mobile") String mobile);
@@ -45,5 +49,6 @@ public interface MemberMapper extends BaseMapper<Member> {
     List<MemberReceiveAddress> getAddressesForMember(Long memberId);
 
     MemberStatisticsInfo getStatisticsForMember(Long memberId);
+
 
 }
