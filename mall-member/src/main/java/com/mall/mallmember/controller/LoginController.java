@@ -17,7 +17,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 @RestController
 public class LoginController {
-
+    
+    @Autowired
     private IMemberService userService;
 
     @Value("${token.expore_time}")

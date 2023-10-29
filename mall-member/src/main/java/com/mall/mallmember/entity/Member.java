@@ -32,7 +32,7 @@ public class Member implements Serializable {
 
     @JsonProperty("username")
     private String username;
-    
+
     @JsonProperty("password")
     private String password;
 
