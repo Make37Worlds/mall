@@ -5,8 +5,9 @@ import com.mall.mallmember.entity.MemberLoginLog;
 import com.mall.mallmember.entity.MemberReceiveAddress;
 import com.mall.mallmember.entity.MemberStatisticsInfo;
 
+import com.mall.mallmember.service.IMemberService;
 import com.mall.mallmember.service.OrderServiceClient;
-import com.mall.mallmember.service.impl.MemberServiceImpl;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,10 @@ import java.util.List;
 public class MemberController {
 
     private final OrderServiceClient orderServiceClient;
-    private final MemberServiceImpl memberService;
 
-    public MemberController(OrderServiceClient orderServiceClient, MemberServiceImpl memberService) {
+    private final IMemberService memberService;
+
+    public MemberController(OrderServiceClient orderServiceClient, IMemberService memberService) {
         this.orderServiceClient = orderServiceClient;
         this.memberService = memberService;
     }

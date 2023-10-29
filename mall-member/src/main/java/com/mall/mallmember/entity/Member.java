@@ -193,4 +193,5 @@ public class Member implements Serializable {
             ", createTime = " + createTime +
         "}";
     }
+
 }

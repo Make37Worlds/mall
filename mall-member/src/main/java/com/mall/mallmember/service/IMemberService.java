@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.mallmember.entity.MemberLoginLog;
 import com.mall.mallmember.entity.MemberReceiveAddress;
 import com.mall.mallmember.entity.MemberStatisticsInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
