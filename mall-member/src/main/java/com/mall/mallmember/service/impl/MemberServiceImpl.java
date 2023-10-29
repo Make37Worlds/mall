@@ -20,7 +20,8 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     }
     @Override
     public MemberVo getMemberVoByName(String name){
-        return baseMapper.findVoByUsername(name);
+        MemberVo member = baseMapper.findVoByUsername(name);
+        return member==null? new MemberVo(): member;
     }
 
 

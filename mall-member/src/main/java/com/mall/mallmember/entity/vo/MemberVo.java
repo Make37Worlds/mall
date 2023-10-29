@@ -1,12 +1,14 @@
 package com.mall.mallmember.entity.vo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.mall.mallmember.entity.Member;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 
 @Data
+@TableName("ums_member")
 public class MemberVo extends Member{
 
     @ApiModelProperty(value = "token")
