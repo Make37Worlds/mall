@@ -1,4 +1,4 @@
-package com.mall.mallmember.constants.constant;
+package com.mall.mallmember.constants;
 
 public interface OAuthConstant {
     interface Roles {

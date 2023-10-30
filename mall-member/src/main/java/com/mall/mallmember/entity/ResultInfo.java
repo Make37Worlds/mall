@@ -1,6 +1,5 @@
 package com.mall.mallmember.entity;
 
-
 import com.mall.mallmember.constants.enums.ResultCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -8,12 +7,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * @author hxf
  * @version 1.0
  * description: 对请求结果进行包装
- * Copyright (C), 2019 by 四川成电大为科技有限公司
- * date：2020/5/9 11:45
- * history:
  */
 @ApiModel(value = "返回结果")
 public class ResultInfo<T> implements Serializable {
@@ -39,25 +34,14 @@ public class ResultInfo<T> implements Serializable {
         this.data = data;
     }
 
-    /**
-     * 返回无数据的成功结果封装对象
-     * @return ResultInfo
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:54
-     */
+
     public static ResultInfo success() {
         ResultInfo resultInfo = new ResultInfo();
         resultInfo.setResultCode(ResultCode.SUCCESS);
         return resultInfo;
     }
 
-    /**
-     * 返回带数据的成功结果封装对象
-     * @param data 数据
-     * @return ResultInfo
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:55
-     */
+
     public static ResultInfo success(Object data) {
         ResultInfo resultInfo = new ResultInfo();
         resultInfo.setResultCode(ResultCode.SUCCESS);
@@ -65,27 +49,13 @@ public class ResultInfo<T> implements Serializable {
         return resultInfo;
     }
 
-    /**
-     * 返回无数据的失败结果封装对象
-     * @param resultCode ResultCode
-     * @return ResultInfo
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:54
-     */
+
     public static ResultInfo failure(ResultCode resultCode) {
         ResultInfo resultInfo = new ResultInfo();
         resultInfo.setResultCode(resultCode);
         return resultInfo;
     }
 
-    /**
-     * 返回带数据的失败结果封装对象
-     * @param resultCode ResultCode
-     * @param data 数据
-     * @return ResultInfo
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:54
-     */
     public static ResultInfo failure(ResultCode resultCode, Object data) {
         ResultInfo resultInfo = new ResultInfo();
         resultInfo.setResultCode(resultCode);
@@ -93,12 +63,7 @@ public class ResultInfo<T> implements Serializable {
         return resultInfo;
     }
 
-    /**
-     * 设置code和msg
-     * @param code ResultCode
-     * @author xiaozhiwei
-     * date: 2018/10/18 17:05
-     */
+
     public void setResultCode(ResultCode code) {
         this.code = code.code();
         this.msg = code.message();
