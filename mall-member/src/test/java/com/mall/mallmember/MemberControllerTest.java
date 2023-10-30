@@ -48,7 +48,7 @@ public class MemberControllerTest {
 
         when(memberService.getMemberByName("John Doe")).thenReturn(mockMember);
 
-        mockMvc.perform(get("/mallmember/member/findMemberByName")
+        mockMvc.perform(get("/member/findMemberByName")
                         .param("name", "John Doe")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -60,7 +60,7 @@ public class MemberControllerTest {
     public void testGetMemberOrders() throws Exception {
         when(orderServiceClient.fetchOrderDetailsForMember(anyString())).thenReturn("Order Details");
 
-        mockMvc.perform(get("/mallmember/member/1/orders"))
+        mockMvc.perform(get("/member/1/orders"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Order Details"));
     }
@@ -72,7 +72,7 @@ public class MemberControllerTest {
         member.setPassword("123");
         when(memberService.addMember(any(Member.class))).thenReturn(true);
 
-        mockMvc.perform(post("/mallmember/member/add")
+        mockMvc.perform(post("/member/add")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(member)))
                 .andExpect(status().isOk())
