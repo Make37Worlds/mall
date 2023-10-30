@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/mallmember/member")
+@RequestMapping("/member")
 public class MemberController {
 
     private final OrderServiceClient orderServiceClient;
