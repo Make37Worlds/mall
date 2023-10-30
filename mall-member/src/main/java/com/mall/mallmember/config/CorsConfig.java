@@ -5,20 +5,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class CorsConfig {
+public class CorsConfig implements WebMvcConfigurer {
 
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true); // 是否支持安全证书
-        config.addAllowedOrigin("*"); // 允许任何域名使用
-        config.addAllowedHeader("*"); // 允许任何头
-        config.addAllowedMethod("*"); // 允许任何方法（post、get等）
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**") // 对所有路径允许跨域
+                .allowedOrigins("http://example.com") // 允许特定域的访问
+                .allowedMethods("GET", "POST", "PUT", "DELETE") // 允许的请求方法
+                .allowedHeaders("*") // 允许所有的请求header访问，可以自定义设置任意请求头信息
+                .allowCredentials(true) // 是否发送Cookie
+                .maxAge(3600); // 预检请求的缓存时间（秒）
     }
 }
-
