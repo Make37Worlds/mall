@@ -1,5 +1,6 @@
 package com.mall.mallproduct.controller;
 
+import com.mall.mallproduct.entity.ResultInfo;
 import com.mall.mallproduct.entity.SpuInfo;
 import com.mall.mallproduct.service.impl.SpuInfoServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -27,16 +28,16 @@ public class SpuInfoController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<SpuInfo>> getAllProducts() {
+    public ResultInfo getAllProducts() {
         List<SpuInfo> products = spuInfoService.getAllProducts();
-        return ResponseEntity.ok(products);
+        return ResultInfo.success(products);
     }
 
 
     @PostMapping("/add")
-    public ResponseEntity<Boolean> addSpu(@RequestBody SpuInfo spuInfo) {
+    public ResultInfo addSpu(@RequestBody SpuInfo spuInfo) {
         boolean result = spuInfoService.addSpu(spuInfo);
-        return ResponseEntity.ok(result);
+        return ResultInfo.success(result);
     }
 
 
