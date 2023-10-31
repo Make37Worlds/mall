@@ -1,7 +1,10 @@
 package com.mall.mallproduct.controller;
 
+import com.mall.mallproduct.entity.SpuInfo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,7 +15,7 @@ import org.springframework.stereotype.Controller;
  * @since 2023-10-25
  */
 @Controller
-@RequestMapping("/mallproduct/skuInfo")
+@RequestMapping("/skuInfo")
 public class SkuInfoController {
 
 }

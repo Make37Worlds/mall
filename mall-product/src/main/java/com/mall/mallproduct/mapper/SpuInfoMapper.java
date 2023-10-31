@@ -2,8 +2,12 @@ package com.mall.mallproduct.mapper;
 
 import com.mall.mallproduct.entity.SpuInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -13,6 +17,7 @@ import org.apache.ibatis.annotations.Select;
  * @author Jiayu
  * @since 2023-10-25
  */
+@Mapper
 public interface SpuInfoMapper extends BaseMapper<SpuInfo> {
 
     /**
