@@ -1,5 +1,6 @@
 package com.mall.mallmember.controller;
 
+import com.mall.mallmember.constants.enums.ResultCode;
 import com.mall.mallmember.entity.*;
 
 import com.mall.mallmember.service.IMemberService;
@@ -61,13 +62,13 @@ public class MemberController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addMember(@RequestBody Member member) {
+    public ResultInfo addMember(@RequestBody Member member) {
         String password = member.getPassword();
         member.setPassword(DigestUtils.sha256Hex(password));
         if (memberService.addMember(member)) {
-            return ResponseEntity.ok("Member added successfully!");
+            return ResultInfo.success("Member added successfully!");
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add member!");
+            return ResultInfo.failure(ResultCode.PARAM_IS_ERROR, "Failed to add member!");
         }
     }
 

@@ -74,6 +74,6 @@ public class MemberControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(member)))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Member added successfully!"));
+                .andExpect(content().string("{\"code\":1,\"msg\":\"æ\u0088\u0090å\u008A\u009F\",\"data\":\"Member added successfully!\"}"));
     }
 }
