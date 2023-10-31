@@ -43,4 +43,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoMapper, SpuInfo> impl
     public boolean addSpu(SpuInfo spu) {
         return this.save(spu);
     }
+
+    @Override
+    public Object getSpuInfoById(String spuId) { return baseMapper.selectBySpuId(spuId);
+    }
 }

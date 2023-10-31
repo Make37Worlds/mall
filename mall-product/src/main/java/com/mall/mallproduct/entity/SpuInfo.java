@@ -134,4 +134,5 @@ public class SpuInfo implements Serializable {
             ", updateTime = " + updateTime +
         "}";
     }
+
 }

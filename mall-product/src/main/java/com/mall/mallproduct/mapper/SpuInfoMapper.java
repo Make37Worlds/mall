@@ -29,6 +29,10 @@ public interface SpuInfoMapper extends BaseMapper<SpuInfo> {
     @Select("SELECT * FROM pms_spu_info WHERE spu_name = #{spuName}")
     SpuInfo selectBySpuName(@Param("spuName") String spuName);
 
+    @Select("SELECT * FROM pms_spu_info WHERE id = #{spuName}")
+    SpuInfo selectBySpuId(@Param("spuName") String spuName);
+
+
     /**
      * Select SpuInfo based on publish status.
      *
