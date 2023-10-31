@@ -1,9 +1,6 @@
 package com.mall.mallmember.controller;
 
-import com.mall.mallmember.entity.Member;
-import com.mall.mallmember.entity.MemberLoginLog;
-import com.mall.mallmember.entity.MemberReceiveAddress;
-import com.mall.mallmember.entity.MemberStatisticsInfo;
+import com.mall.mallmember.entity.*;
 
 import com.mall.mallmember.service.IMemberService;
 import com.mall.mallmember.service.OrderServiceClient;
@@ -44,8 +41,8 @@ public class MemberController {
     }
 
     @GetMapping("/findMemberByName")
-    public Member getMemberByName(@RequestParam String name) {
-        return memberService.getMemberByName(name);
+    public ResultInfo getMemberByName(@RequestParam String name) {
+        return ResultInfo.success(memberService.getMemberByName(name));
     }
 
     @GetMapping("/{memberId}/loginlogs")

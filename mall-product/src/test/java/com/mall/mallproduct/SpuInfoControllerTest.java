@@ -43,7 +43,7 @@ class SpuInfoControllerTest {
         spuInfo.setWeight(new BigDecimal("10.5"));
         spuInfo.setPublishStatus((byte) 1);
     }
-    
+
 
     @Test
     void shouldAddSpu() throws Exception {

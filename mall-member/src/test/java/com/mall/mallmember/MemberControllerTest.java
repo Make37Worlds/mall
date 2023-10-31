@@ -1,4 +1,5 @@
 package com.mall.mallmember;
+import com.mall.mallmember.entity.ResultInfo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class MemberControllerTest {
                         .param("name", "John Doe")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json(new ObjectMapper().writeValueAsString(mockMember)));
+                .andExpect(content().json(new ObjectMapper().writeValueAsString(ResultInfo.success(mockMember))));
     }
 
 
