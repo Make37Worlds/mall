@@ -14,7 +14,6 @@ import java.util.List;
 public class SpuInfoController {
     private final SpuInfoServiceImpl spuInfoService;
 
-    @Autowired
     public SpuInfoController(SpuInfoServiceImpl spuInfoService) {
         this.spuInfoService = spuInfoService;
     }
