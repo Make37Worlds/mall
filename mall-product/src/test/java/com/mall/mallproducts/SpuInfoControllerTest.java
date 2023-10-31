@@ -51,5 +51,5 @@ public class SpuInfoControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-    
+
 }
