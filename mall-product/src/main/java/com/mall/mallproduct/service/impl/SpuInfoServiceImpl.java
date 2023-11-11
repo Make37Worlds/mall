@@ -47,4 +47,9 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoMapper, SpuInfo> impl
     @Override
     public Object getSpuInfoById(String spuId) { return baseMapper.selectBySpuId(spuId);
     }
+
+    @Override
+    public List<SpuInfo> getProductsByUserId(String userId) {
+        return baseMapper.selectBySellerId(userId);
+    }
 }

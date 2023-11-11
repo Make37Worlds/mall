@@ -22,7 +22,7 @@ spec:
             requests:
               cpu: "250m"
             limits:
-              cpu: "750m"  # 这表示最多可以使用0.5核的CPU
+              cpu: "750m"
 ---
 apiVersion: v1
 kind: Service

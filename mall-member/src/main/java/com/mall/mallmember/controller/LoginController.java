@@ -26,7 +26,7 @@ public class LoginController {
 
     @PostMapping("/login")
     @ApiOperation(value = "用户登录")
-    public ResultInfo login(@RequestBody Member userLogin) {
+    public ResultInfo login(@RequestBody Member userLogin) throws Exception {
         // 判断输入的用户名、密码不能为空
         String loginName =userLogin.getUsername();
         String password = userLogin.getPassword();
@@ -45,7 +45,7 @@ public class LoginController {
             return ResultInfo.failure(ResultCode.USER_IS_CANCELLATION);
         }
         // 创建token
-        String token = JwtUtils.createTokenById(userVo.getId().toString(),password);
+        String token = JwtUtils.createTokenById(userVo.getId().toString(),"private_key.pem");
         // 将user对象补充完整
         userVo.setToken(token);
         userVo.setCreateTime(new Date(System.currentTimeMillis()));

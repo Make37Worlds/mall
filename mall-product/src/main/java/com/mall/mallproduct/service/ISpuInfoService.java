@@ -28,4 +28,6 @@ public interface ISpuInfoService extends IService<SpuInfo> {
     boolean addSpu(SpuInfo spu);
 
     Object getSpuInfoById(String spuId);
+
+    List<SpuInfo> getProductsByUserId(String userId);
 }

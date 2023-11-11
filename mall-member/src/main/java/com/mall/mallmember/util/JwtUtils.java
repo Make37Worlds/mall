@@ -9,6 +9,12 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.KeyFactory;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.util.Base64;
 import java.util.Date;
 
 /**
@@ -36,15 +42,13 @@ public class JwtUtils {
     }
 
     /**
-         * @Author hxf
          * @Description 创建token
-         * @Date 2020/5/11 16:49
          * @param userId
     	 * @param password
          * @throws
          * @return java.lang.String
     */
-    public static String createTokenById(String userId, String password) {
+    public static String createTokenFirstEdition(String userId, String password) {
         Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
         //加密处理密码
         Algorithm algorithm = Algorithm.HMAC256(password);
@@ -54,10 +58,39 @@ public class JwtUtils {
                 .sign(algorithm);
     }
 
+    // 从字符串加载私钥
+    private static RSAPrivateKey getPrivateKey(String filename) throws Exception {
+        String privateKey = Files.readString(Paths.get(filename))
+                .replace("-----BEGIN PRIVATE KEY-----", "")
+                .replaceAll(System.lineSeparator(), "")
+                .replace("-----END PRIVATE KEY-----", "");
+
+        byte[] pkcs8EncodedBytes = Base64.getDecoder().decode(privateKey);
+        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(pkcs8EncodedBytes);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
+    }
+
+    // 创建Token
+    public static String createTokenById(String userId, String privateKeyPem) throws Exception {
+        RSAPrivateKey privateKey = getPrivateKey(privateKeyPem);
+        Algorithm algorithm = Algorithm.RSA256(null, privateKey);
+
+        // 设置Token的过期时间
+        Date issuedAt = new Date(System.currentTimeMillis());
+        Date expiresAt = new Date(issuedAt.getTime() + EXPIRE_TIME); // 1小时后过期
+
+        // 创建Token
+        return JWT.create()
+                .withIssuer("auth0")
+                .withClaim("userId", userId)
+                .withIssuedAt(issuedAt)
+                .withExpiresAt(expiresAt)
+                .sign(algorithm);
+    }
+
     /**
-         * @Author hxf
          * @Description 验证登录用户名和密码是否正确
-         * @Date 2020/5/11 16:50
          * @param userId
     	 * @param dbPwd
     	 * @param token
@@ -78,9 +111,7 @@ public class JwtUtils {
     }
 
     /**
-         * @Author hxf
          * @Description 根据token查询用户名
-         * @Date 2020/5/11 16:50
          * @param token
          * @throws
          * @return java.lang.String
@@ -92,5 +123,10 @@ public class JwtUtils {
         } catch (JWTDecodeException e) {
             return null;
         }
+    }
+
+    public static Date getDateFromToken(String token) {
+        DecodedJWT jwt = JWT.decode(token);
+        return jwt.getExpiresAt();
     }
 }

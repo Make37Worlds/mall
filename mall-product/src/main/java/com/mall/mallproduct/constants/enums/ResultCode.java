@@ -8,7 +8,7 @@ import java.util.List;
 
 public enum ResultCode {
     /* 成功状态码 */
-    SUCCESS(200, "成功"),
+    SUCCESS(1, "成功"),
     CODE_EXIT(2, "该地址已经导入"),
     ERROR(500,"请求失败"),
 
@@ -151,33 +151,17 @@ public enum ResultCode {
         this.message = message;
     }
 
-    /**
-     * 获取code
-     * @return Integer
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:50
-     */
+
     public Integer code() {
         return this.code;
     }
 
-    /**
-     * 获取message
-     * @return String
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:50
-     */
+
     public String message() {
         return this.message;
     }
 
-    /**
-     * 根据name获取message
-     * @param name name
-     * @return String
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:52
-     */
+
     public static String getMessage(String name) {
         for (ResultCode item : ResultCode.values()) {
             if (item.name().equals(name)) {
@@ -187,13 +171,7 @@ public enum ResultCode {
         return name;
     }
 
-    /**
-     * 根据name获取code
-     * @param name name
-     * @return Integer
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:51
-     */
+
     public static Integer getCode(String name) {
         for (ResultCode item : ResultCode.values()) {
             if (item.name().equals(name)) {
@@ -211,8 +189,6 @@ public enum ResultCode {
     /**
      * 校验重复的code值
      * @param args String[]
-     * @author xiaozhiwei
-     * date: 2018/10/18 16:51
      */
     public static void main(String[] args) {
         ResultCode[] apiResultCodes = ResultCode.values();

@@ -39,6 +39,17 @@ public class SpuInfo implements Serializable {
     @ApiModelProperty("Æ·ï¿½ï¿½id")
     private Long brandId;
 
+    public Long getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    @ApiModelProperty("owner")
+    private Long sellerId;
+
     private BigDecimal weight;
 
     @ApiModelProperty("ï¿½Ï¼ï¿½×´Ì¬[0 - ï¿½Â¼Ü£ï¿½1 - ï¿½Ï¼ï¿½]")
