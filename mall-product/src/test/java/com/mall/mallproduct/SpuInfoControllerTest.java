@@ -42,6 +42,7 @@ class SpuInfoControllerTest {
         spuInfo.setBrandId(1L);
         spuInfo.setWeight(new BigDecimal("10.5"));
         spuInfo.setPublishStatus((byte) 1);
+        spuInfo.setSellerId(1L);
     }
 
 
@@ -55,7 +56,7 @@ class SpuInfoControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(spuInfo)))
                 .andExpect(status().isOk())
-                .andExpect(content().string("{\"code\":200,\"msg\":\"æ\u0088\u0090å\u008A\u009F\",\"data\":true}"));
+                .andExpect(content().string("{\"code\":1,\"msg\":\"æ\u0088\u0090å\u008A\u009F\",\"data\":true}"));
     }
 
 
