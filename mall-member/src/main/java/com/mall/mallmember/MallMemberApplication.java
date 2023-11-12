@@ -15,8 +15,8 @@ import static com.mall.mallmember.util.JwtUtils.createTokenById;
 public class MallMemberApplication {
 
     public static void main(String[] args) throws Exception {
-//        String token = createTokenById("1", "private_key.pem");
-//        System.out.println(token);
+        String token = createTokenById("1", "private_key.pem");
+        System.out.println(token);
         SpringApplication.run(MallMemberApplication.class, args);
     }
 
