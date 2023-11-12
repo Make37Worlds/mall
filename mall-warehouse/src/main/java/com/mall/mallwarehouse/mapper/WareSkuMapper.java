@@ -18,7 +18,7 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface WareSkuMapper extends BaseMapper<WareSku> {
-    @Update("UPDATE wms_ware_sku SET stock = stock - #{quantity} WHERE sku_id = #{skuId} AND stock >= #{quantity}")
+    @Update("UPDATE wms_ware_sku SET stock = stock - #{quantity} WHERE sku_id = #{skuId}")
     int decreaseStock(@Param("skuId") Long skuId, @Param("quantity") Integer quantity);
 
     @Select("SELECT * FROM wms_ware_sku WHERE sku_id = #{skuId}")
