@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -68,5 +69,22 @@ class SpuInfoControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.spuName").value("Product1"));
     }
+
+    @Test
+    void shouldGetProductsByUserId() throws Exception {
+        // 准备数据
+        List<SpuInfo> spuInfos = Arrays.asList(spuInfo); // 假设 spuInfo 是您想要返回的产品信息
+        String userId = "1"; // 假设的用户ID
+
+        // 模拟服务层返回数据
+        when(spuInfoService.getProductsByUserId(userId)).thenReturn(spuInfos);
+
+        // 执行请求并验证结果
+        mockMvc.perform(get("/spuInfo/user/products")
+                        .header("X-User-ID", userId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].spuName").value("Product1")); // 验证返回的数据
+    }
+
 
 }
