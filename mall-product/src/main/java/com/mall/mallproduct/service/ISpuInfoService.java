@@ -29,5 +29,5 @@ public interface ISpuInfoService extends IService<SpuInfo> {
 
     Object getSpuInfoById(String spuId);
 
-    List<SpuInfo> getProductsByUserId(String sellerId);
+    List<SpuInfo> getProductsByUserId(String userId);
 }

@@ -1,5 +1,6 @@
 package com.mall.mallproduct.controller;
 
+import com.mall.mallproduct.constants.enums.ResultCode;
 import com.mall.mallproduct.entity.ResultInfo;
 import com.mall.mallproduct.entity.SpuInfo;
 import com.mall.mallproduct.service.impl.SpuInfoServiceImpl;
@@ -28,12 +29,12 @@ public class SpuInfoController {
     }
 
     @GetMapping("/user/products")
-    public ResponseEntity<List<SpuInfo>> getProductsByUserId(@RequestHeader("X-User-ID") String userId) {
+    public ResultInfo getProductsByUserId(@RequestHeader("X-User-ID") String userId) {
         List<SpuInfo> spuInfos = spuInfoService.getProductsByUserId(userId);
         if (!spuInfos.isEmpty()) {
-            return ResponseEntity.ok(spuInfos);
+            return ResultInfo.success(spuInfos);
         } else {
-            return ResponseEntity.notFound().build();
+            return ResultInfo.failure(ResultCode.RESULT_DATA_NONE, "no records");
         }
     }
 
