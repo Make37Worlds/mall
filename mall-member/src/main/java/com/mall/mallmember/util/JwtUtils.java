@@ -27,7 +27,7 @@ import java.util.Date;
  */
 @Component
 public class JwtUtils {
-    private static long EXPIRE_TIME;
+    private static long EXPIRE_TIME = 3600000;
 
     private static String CLAIM_ID;
 
@@ -63,7 +63,8 @@ public class JwtUtils {
         String privateKey = Files.readString(Paths.get(filename))
                 .replace("-----BEGIN PRIVATE KEY-----", "")
                 .replaceAll(System.lineSeparator(), "")
-                .replace("-----END PRIVATE KEY-----", "");
+                .replace("-----END PRIVATE KEY-----", "")
+                .replaceAll("\\s+", "");;
 
         byte[] pkcs8EncodedBytes = Base64.getDecoder().decode(privateKey);
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(pkcs8EncodedBytes);
@@ -79,7 +80,8 @@ public class JwtUtils {
         // 设置Token的过期时间
         Date issuedAt = new Date(System.currentTimeMillis());
         Date expiresAt = new Date(issuedAt.getTime() + EXPIRE_TIME); // 1小时后过期
-
+        System.out.println(issuedAt);
+        System.out.println(expiresAt);
         // 创建Token
         return JWT.create()
                 .withIssuer("auth0")
