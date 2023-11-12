@@ -27,7 +27,8 @@ import java.util.Date;
  */
 @Component
 public class JwtUtils {
-    private static long EXPIRE_TIME = 3600000;
+    @Value("${token.expore_time}")
+    private static long EXPIRE_TIME;
 
     private static String CLAIM_ID;
 

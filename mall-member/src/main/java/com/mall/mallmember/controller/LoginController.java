@@ -47,7 +47,7 @@ public class LoginController {
             return ResultInfo.failure(ResultCode.USER_IS_CANCELLATION);
         }
         // 创建token
-        String token = createTokenById(userVo.getId().toString(),"com/mall/mallmember/util/private_key.pem");
+        String token = createTokenById(userVo.getId().toString(),"src/main/java/com/mall/mallmember/util/private_key.pem");
         // 将user对象补充完整
         userVo.setToken(token);
         userVo.setCreateTime(new Date(System.currentTimeMillis()));
