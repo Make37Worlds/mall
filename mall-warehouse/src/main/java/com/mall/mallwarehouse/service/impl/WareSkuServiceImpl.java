@@ -20,10 +20,10 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuMapper, WareSku> impl
     @Override
     public boolean reduceStock(Long skuId, Integer quantity) {
         // 实现减少库存的逻辑
-        WareSku wareSku = this.baseMapper.selectById(skuId);
+        WareSku wareSku = this.baseMapper.selectBySkuId(skuId);
         if (wareSku != null && wareSku.getStock() >= quantity) {
-            wareSku.setStock(wareSku.getStock() - quantity);
-            return this.updateById(wareSku);
+            this.baseMapper.decreaseStock(skuId,quantity);
+            return true;
         }
         return false;
     }

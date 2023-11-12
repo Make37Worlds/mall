@@ -4,6 +4,7 @@ import com.mall.mallwarehouse.entity.WareSku;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 /**
@@ -19,4 +20,7 @@ import org.apache.ibatis.annotations.Update;
 public interface WareSkuMapper extends BaseMapper<WareSku> {
     @Update("UPDATE wms_ware_sku SET stock = stock - #{quantity} WHERE sku_id = #{skuId} AND stock >= #{quantity}")
     int decreaseStock(@Param("skuId") Long skuId, @Param("quantity") Integer quantity);
+
+    @Select("SELECT * FROM ware_sku WHERE sku_id = #{skuId}")
+    WareSku selectBySkuId(Long skuId);
 }
