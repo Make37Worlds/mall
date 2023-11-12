@@ -21,6 +21,6 @@ public interface WareSkuMapper extends BaseMapper<WareSku> {
     @Update("UPDATE wms_ware_sku SET stock = stock - #{quantity} WHERE sku_id = #{skuId} AND stock >= #{quantity}")
     int decreaseStock(@Param("skuId") Long skuId, @Param("quantity") Integer quantity);
 
-    @Select("SELECT * FROM ware_sku WHERE sku_id = #{skuId}")
+    @Select("SELECT * FROM wms_ware_sku WHERE sku_id = #{skuId}")
     WareSku selectBySkuId(Long skuId);
 }
