@@ -28,8 +28,8 @@ public class SpuInfoController {
     }
 
     @GetMapping("/user/products")
-    public ResponseEntity<List<SpuInfo>> getProductsByUserId(@RequestHeader("X-User-ID") String userId) {
-        List<SpuInfo> spuInfos = spuInfoService.getProductsByUserId(userId);
+    public ResponseEntity<List<SpuInfo>> getProductsByUserId(@RequestHeader("X-User-ID") String sellerId) {
+        List<SpuInfo> spuInfos = spuInfoService.getProductsByUserId(sellerId);
         if (!spuInfos.isEmpty()) {
             return ResponseEntity.ok(spuInfos);
         } else {

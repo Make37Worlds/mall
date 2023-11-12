@@ -51,6 +51,6 @@ public interface SpuInfoMapper extends BaseMapper<SpuInfo> {
     @Select("SELECT * FROM pms_spu_info WHERE create_time > #{createTime}")
     List<SpuInfo> selectByCreateTimeAfter(@Param("createTime") LocalDateTime createTime);
 
-    @Select("SELECT * FROM pms_spu_info WHERE seller_id = #{userId}")
-    List<SpuInfo> selectBySellerId(@Param("seller_id") String userId);
+    @Select("SELECT * FROM pms_spu_info WHERE seller_id = #{sellerId}")
+    List<SpuInfo> selectBySellerId(@Param("seller_id") String sellerId);
 }
