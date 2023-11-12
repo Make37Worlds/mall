@@ -2,6 +2,12 @@ package com.mall.mallmember;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.javapoet.ClassName;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import static com.mall.mallmember.util.JwtUtils.createTokenById;
 
@@ -9,7 +15,8 @@ import static com.mall.mallmember.util.JwtUtils.createTokenById;
 public class MallMemberApplication {
 
     public static void main(String[] args) throws Exception {
-        //System.out.println(createTokenById("1", "com/mall/mallmember/util/private_key.pem"));
+//        String token = createTokenById("1", "private_key.pem");
+//        System.out.println(token);
         SpringApplication.run(MallMemberApplication.class, args);
     }
 

@@ -9,9 +9,12 @@ import com.mall.mallmember.util.JwtUtils;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.javapoet.ClassName;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.net.URL;
 import java.util.Date;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -47,7 +50,7 @@ public class LoginController {
             return ResultInfo.failure(ResultCode.USER_IS_CANCELLATION);
         }
         // 创建token
-        String token = createTokenById(userVo.getId().toString(),"src/main/java/com/mall/mallmember/util/private_key.pem");
+        String token = createTokenById(userVo.getId().toString(), "private_key.pem");
         // 将user对象补充完整
         userVo.setToken(token);
         userVo.setCreateTime(new Date(System.currentTimeMillis()));

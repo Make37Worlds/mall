@@ -7,8 +7,13 @@ import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.javapoet.ClassName;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyFactory;
@@ -61,11 +66,25 @@ public class JwtUtils {
 
     // 从字符串加载私钥
     private static RSAPrivateKey getPrivateKey(String filename) throws Exception {
-        String privateKey = Files.readString(Paths.get(filename))
+        URL privateKeyUrl = ClassName.class.getClassLoader().getResource(filename);
+        String privateKeyContent = null;
+        if (privateKeyUrl != null) {
+            try (InputStream privateKeyStream = privateKeyUrl.openStream()) {
+
+                privateKeyContent = new String(privateKeyStream.readAllBytes(), StandardCharsets.UTF_8);
+
+            } catch (IOException e) {
+                // 处理异常
+                e.printStackTrace();
+            }
+        }
+
+        String privateKey = privateKeyContent
                 .replace("-----BEGIN PRIVATE KEY-----", "")
                 .replaceAll(System.lineSeparator(), "")
                 .replace("-----END PRIVATE KEY-----", "")
-                .replaceAll("\\s+", "");;
+                .replaceAll("\\s+", "");
+        ;
 
         byte[] pkcs8EncodedBytes = Base64.getDecoder().decode(privateKey);
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(pkcs8EncodedBytes);
