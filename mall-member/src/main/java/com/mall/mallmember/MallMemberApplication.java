@@ -9,7 +9,7 @@ import static com.mall.mallmember.util.JwtUtils.createTokenById;
 public class MallMemberApplication {
 
     public static void main(String[] args) throws Exception {
-        System.out.println(createTokenById("1", "src/main/java/com/mall/mallmember/util/private_key.pem"));
+        //System.out.println(createTokenById("1", "com/mall/mallmember/util/private_key.pem"));
         SpringApplication.run(MallMemberApplication.class, args);
     }
 
