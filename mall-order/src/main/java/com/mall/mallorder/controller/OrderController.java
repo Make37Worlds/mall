@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-10-25
  */
 @RestController
-@RequestMapping("/mallorder/order")
+@RequestMapping("/order")
 public class OrderController {
     @GetMapping("/{memberId}")
     public String getOrderDetails(@PathVariable String memberId) {

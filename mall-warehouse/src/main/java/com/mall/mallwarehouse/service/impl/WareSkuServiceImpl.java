@@ -17,4 +17,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class WareSkuServiceImpl extends ServiceImpl<WareSkuMapper, WareSku> implements IWareSkuService {
 
+    @Override
+    public boolean reduceStock(Long skuId, Integer quantity) {
+        // 实现减少库存的逻辑
+        WareSku wareSku = this.baseMapper.selectById(skuId);
+        if (wareSku != null && wareSku.getStock() >= quantity) {
+            wareSku.setStock(wareSku.getStock() - quantity);
+            return this.updateById(wareSku);
+        }
+        return false;
+    }
 }

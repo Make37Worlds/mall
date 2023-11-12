@@ -1,8 +1,8 @@
 package com.mall.mallorder.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.mallorder.entity.OrderReturnReason;
 import com.mall.mallorder.mapper.OrderReturnReasonMapper;
-import com.mall.mallorder.service.IOrderReturnReasonService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2023-10-25
  */
 @Service
-public class OrderReturnReasonServiceImpl extends ServiceImpl<OrderReturnReasonMapper, OrderReturnReason> implements IOrderReturnReasonService {
+public class OrderReturnReasonServiceImpl extends ServiceImpl<OrderReturnReasonMapper, OrderReturnReason> implements IService<OrderReturnReason> {
 
 }

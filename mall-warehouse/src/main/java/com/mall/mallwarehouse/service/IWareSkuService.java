@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2023-10-25
  */
 public interface IWareSkuService extends IService<WareSku> {
-
+    boolean reduceStock(Long skuId, Integer quantity);
 }
