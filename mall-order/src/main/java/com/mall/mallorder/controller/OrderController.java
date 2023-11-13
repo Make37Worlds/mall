@@ -57,12 +57,18 @@ public class OrderController {
         if (stockReduced.getCode() != 1) {
             return ResultInfo.failure(ResultCode.DATA_ADD_ERROR,"stock not enough");
         }
-        MemberInfo member = (MemberInfo) memberSvcClient.getMemberById(memberId).getData();
         Order order = new Order();
-        order.setMemberId(memberId);
-        order.setCreateTime(LocalDateTime.now());
-        order.setMemberUsername(member.getUsername());
-        order.setReceiverCity(member.getCity());
+        ResultInfo<MemberInfo> result = memberSvcClient.getMemberById(memberId);
+        if (result != null && result.getData() != null) {
+            MemberInfo member = result.getData();
+
+            order.setMemberId(memberId);
+            order.setCreateTime(LocalDateTime.now());
+            order.setMemberUsername(member.getUsername());
+            order.setReceiverCity(member.getCity());
+        }
+
+
         boolean orderItemCreated = orderItemService.addOrderItem(request.toOrderItem());
         boolean orderCreated = orderService.createOrder(order);
         if (orderCreated && orderItemCreated) {
