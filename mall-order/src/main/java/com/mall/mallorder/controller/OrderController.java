@@ -1,10 +1,21 @@
 package com.mall.mallorder.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.mall.mallorder.constants.enums.ResultCode;
+import com.mall.mallorder.entity.DTO.MemberInfo;
+import com.mall.mallorder.entity.DTO.OrderRequest;
+import com.mall.mallorder.entity.Order;
+import com.mall.mallorder.entity.ResultInfo;
+import com.mall.mallorder.service.IOrderItemService;
+import com.mall.mallorder.service.IOrderService;
+import com.mall.mallorder.service.impl.MemberSvcClient;
+import com.mall.mallorder.service.impl.WarehouseServiceClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.lang.reflect.Member;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -17,11 +28,55 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+    private final IOrderItemService orderItemService;
+    private final IOrderService orderService;
+
+    @Autowired
+    private WarehouseServiceClient warehouseServiceClient;
+
+    @Autowired
+    private MemberSvcClient memberSvcClient;
+    public OrderController(IOrderService orderService, IOrderItemService orderItemService) {
+        this.orderItemService = orderItemService;
+        this.orderService = orderService;
+    }
+
+    @PostMapping("/create")
+    public ResultInfo createOrder(@RequestBody Order order) {
+        boolean isCreated = orderService.createOrder(order);
+        if (isCreated) {
+            return ResultInfo.success("Order created successfully.");
+        } else {
+            return ResultInfo.failure(ResultCode.DATA_ADD_ERROR,"Failed to create order.");
+        }
+    }
+
+    @PostMapping("/createWithStockCheck")
+    public ResultInfo createOrderWithStockCheck(@RequestHeader("X-User-ID") Long memberId, @RequestBody OrderRequest request) {
+        ResultInfo stockReduced = warehouseServiceClient.reduceStock(request);
+        if (stockReduced.getCode() != 1) {
+            return ResultInfo.failure(ResultCode.DATA_ADD_ERROR,"stock not enough");
+        }
+        MemberInfo member = memberSvcClient.getMemberById(memberId);
+        Order order = new Order();
+        order.setMemberId(memberId);
+        order.setCreateTime(LocalDateTime.now());
+        order.setMemberUsername(member.getUsername());
+        order.setReceiverCity(member.getCity());
+        boolean orderItemCreated = orderItemService.addOrderItem(request.toOrderItem());
+        boolean orderCreated = orderService.createOrder(order);
+        if (orderCreated && orderItemCreated) {
+            return ResultInfo.success(order);
+        } else {
+            return ResultInfo.failure(ResultCode.DATA_ADD_ERROR,"Failed to create order.");
+        }
+    }
+
     @GetMapping("/{memberId}")
     public String getOrderDetails(@PathVariable String memberId) {
-        // For this example, we'll return a static message.
-        // In a real-world scenario, you'd fetch actual order details from a database or another source.
         return "Order details for member: " + memberId;
     }
+
+
 
 }

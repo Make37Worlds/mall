@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IOrderItemService extends IService<OrderItem> {
 
+    boolean addOrderItem(OrderItem orderItem);
 }

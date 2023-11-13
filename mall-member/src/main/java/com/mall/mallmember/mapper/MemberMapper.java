@@ -49,5 +49,4 @@ public interface MemberMapper extends BaseMapper<Member> {
 
     MemberStatisticsInfo getStatisticsForMember(Long memberId);
 
-
 }
