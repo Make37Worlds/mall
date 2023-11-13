@@ -48,7 +48,7 @@ public class OrderControllerTest {
         ResultInfo mockStockResponse = ResultInfo.success();
         MemberInfo mockMember = new MemberInfo(); // Populate with test data
         when(warehouseServiceClient.reduceStock(request)).thenReturn(mockStockResponse);
-        when(memberSvcClient.getMemberById(memberId)).thenReturn(mockMember);
+        when(memberSvcClient.getMemberById(memberId)).thenReturn(ResultInfo.success(mockMember));
         when(orderService.createOrder(any(Order.class))).thenReturn(true);
     }
 }

@@ -57,7 +57,7 @@ public class OrderController {
         if (stockReduced.getCode() != 1) {
             return ResultInfo.failure(ResultCode.DATA_ADD_ERROR,"stock not enough");
         }
-        MemberInfo member = memberSvcClient.getMemberById(memberId);
+        MemberInfo member = (MemberInfo) memberSvcClient.getMemberById(memberId).getData();
         Order order = new Order();
         order.setMemberId(memberId);
         order.setCreateTime(LocalDateTime.now());
