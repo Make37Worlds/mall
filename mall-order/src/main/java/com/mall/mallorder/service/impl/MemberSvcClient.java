@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface MemberSvcClient {
 
     @GetMapping("/member/findMemberById")
-    ResultInfo getMemberById(@RequestParam("id") Long id);
+    ResultInfo<MemberInfo> getMemberById(@RequestParam("id") Long id);
 }
