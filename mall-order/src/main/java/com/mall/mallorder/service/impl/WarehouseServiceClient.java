@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "mall-warehouse-service", url = "http://mall-warehouse-service")
 public interface WarehouseServiceClient {
 
-    @PostMapping("/api/mallwarehouse/wareSku/reduceStock")
+    @PostMapping("/wareSku/reduceStock")
     ResultInfo reduceStock(@RequestBody OrderRequest request);
 }

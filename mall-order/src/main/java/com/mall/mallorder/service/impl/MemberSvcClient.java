@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "mall-member-service", url = "http://mall-member-service")
 public interface MemberSvcClient {
 
-    @PostMapping("/api/mallmember/member/findMemberById")
+    @PostMapping("/member/findMemberById")
     MemberInfo getMemberById(@RequestParam Long id);
 }
