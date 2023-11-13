@@ -16,6 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface OrderItemMapper extends BaseMapper<OrderItem> {
-    @Insert("INSERT INTO order_item (order_id, order_sn, spu_id, spu_name, spu_pic, spu_brand, category_id, sku_id, sku_name, sku_pic, sku_price, sku_quantity) VALUES (#{orderId}, #{orderSn}, #{spuId}, #{spuName}, #{spuPic}, #{spuBrand}, #{categoryId}, #{skuId}, #{skuName}, #{skuPic}, #{skuPrice}, #{skuQuantity})")
+    @Insert("INSERT INTO oms_order_item (order_id, order_sn, spu_id, spu_name, spu_pic, spu_brand, category_id, sku_id, sku_name, sku_pic, sku_price, sku_quantity) VALUES (#{orderId}, #{orderSn}, #{spuId}, #{spuName}, #{spuPic}, #{spuBrand}, #{categoryId}, #{skuId}, #{skuName}, #{skuPic}, #{skuPrice}, #{skuQuantity})")
     int insert(OrderItem orderItem);
 }
